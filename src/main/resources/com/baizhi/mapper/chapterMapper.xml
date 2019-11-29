@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.ChapterDao">
+
+    <insert id="add">
+        INSERT INTO chapater (id, size, time_length, publish_time, audio_file, album_id)
+        VALUES (#{id}, #{size}, #{timeLength}, #{publishTime}, #{audioFile}, #{albumId})
+    </insert>
+
+    <update id="update">
+        UPDATE chapater
+        SET size         = #{size}, time_length = #{timeLength},
+            publish_time = #{publishTime}
+        WHERE id = #{id}
+    </update>
+    <update id="updateById">
+        UPDATE chapater
+        SET size = #{size}, time_length = #{timeLength}, audio_file = #{audioFile}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByCount">
+
+    </delete>
+
+    <delete id="deleteById">
+        DELETE FROM chapater
+        WHERE id = #{id}
+    </delete>
+
+    <select id="queryNum" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM chapater
+    </select>
+
+    <select id="queryByPage" resultType="com.baizhi.cmfz.entity.Chapter">
+        SELECT id, SIZE, time_length AS timeLength,
+        publish_time AS publishTime,
+        audio_file AS audioFile FROM chapater
+        WHERE album_id=#{id} LIMIT
+        #{start}, #{rows}
+    </select>
+
+
+</mapper>

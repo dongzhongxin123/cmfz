@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.AlbumDao">
+
+    <insert id="add">
+        INSERT INTO album VALUES (#{id}, #{title}, #{score}, #{author}, #{announcer}, #{chapterNumber},
+                                         #{albumIntroduction}, #{status}, #{publishTime}, #{uploadTime},
+                                         #{illustration})
+    </insert>
+
+    <update id="update">
+        UPDATE album
+        SET title          = #{title}, score = #{score}, author = #{author}, announcer = #{announcer},
+            chapter_number = #{chapterNumber}, album_introduction = #{albumIntroduction}, status = #{status},
+            publish_time   = #{publishTime}, upload_time = #{uploadTime}
+    </update>
+
+    <update id="updateById">
+        UPDATE album
+        SET illustration = #{illustration}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM album
+        WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteCount">
+        DELETE FROM album WHERE id in
+        <foreach collection="array" close=")" open="(" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="queryAll" resultType="com.baizhi.cmfz.entity.Album">
+        SELECT
+            id,
+            title,
+            score,
+            author,
+            announcer,
+            chapter_number     AS chapterNumber,
+            album_introduction AS albumIntroduction,
+            status,
+            publishTime,
+            uploadTime,
+            illustration
+        FROM album
+    </select>
+
+    <select id="queryByPage" resultType="com.baizhi.cmfz.entity.Album">
+        SELECT
+            id,
+            title,
+            score,
+            author,
+            announcer,
+            chapter_number     AS chapterNumber,
+            album_introduction AS albumIntroduction,
+            status,
+            publish_time       AS publishTime,
+            upload_time        AS uploadTime,
+            illustration
+        FROM album limit #{start}, #{rows}
+    </select>
+
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM album
+    </select>
+
+</mapper>

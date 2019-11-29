@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.ArticleDao">
+
+    <select id="queryBypage" resultType="com.baizhi.cmfz.entity.Article">
+        SELECT
+            id,
+            title,
+            author,
+            content,
+            status,
+            publish_time AS publishTime
+        FROM article limit #{start}, #{rows}
+    </select>
+
+    <select id="findByCount" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM article
+    </select>
+
+    <select id="queryById" resultType="com.baizhi.cmfz.entity.Article">
+        SELECT
+            id,
+            title,
+            author,
+            content,
+            create_time  AS createTime,
+            status,
+            publish_time AS publishTime
+        FROM article
+        WHERE id = #{id}
+    </select>
+
+    <select id="queryAll" resultType="com.baizhi.cmfz.entity.Article">
+        SELECT
+            id,
+            title,
+            author,
+            content,
+            status,
+            publish_time AS publishTime
+        FROM article
+    </select>
+
+    <select id="queryByUidAndId" resultType="com.baizhi.cmfz.entity.Article">
+        SELECT
+            id,
+            title,
+            author,
+            content,
+            status,
+            publish_time AS publishTime
+        FROM article
+        WHERE id = #{id} AND author = #{author}
+    </select>
+
+    <update id="saveArticle">
+        UPDATE article
+        SET title = #{title}, status = #{status}where ID = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM article
+        WHERE id = #{id}
+    </delete>
+
+    <insert id="addArticle">
+        INSERT INTO article (id, title, author, content, status, publish_time)
+        VALUES (#{id}, #{title}, #{author}, #{content}, #{status}, #{publishTime})
+    </insert>
+</mapper>

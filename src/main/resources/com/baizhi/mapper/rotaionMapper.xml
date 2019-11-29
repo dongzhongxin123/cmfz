@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.RotationDao">
+
+    <select id="queryAll" resultType="com.baizhi.cmfz.entity.Rotation">
+        SELECT
+            id,
+            title,
+            describel,
+            create_time AS createTime,
+            status,
+            photo
+        FROM rotation
+    </select>
+
+    <select id="findAllDeptByPage" resultType="com.baizhi.cmfz.entity.Rotation">
+        SELECT
+            id,
+            title,
+            describel,
+            create_time AS createTime,
+            status,
+            photo
+        FROM rotation
+             limit #{start}, #{rows}
+    </select>
+
+    <select id="findByCount" resultType="java.lang.Integer">
+        SELECT count(id)
+        FROM rotation
+    </select>
+
+    <select id="queryById" resultType="com.baizhi.cmfz.entity.Rotation">
+        SELECT
+            id,
+            title,
+            describel,
+            create_time AS createTime,
+            status,
+            photo
+        FROM rotation
+        WHERE id = #{id}
+    </select>
+
+    <insert id="add" parameterType="Rotation">
+        INSERT INTO rotation (id, title, describel, create_time, status, photo)
+        VALUES (#{id}, #{title}, #{describel}, #{createTime}, #{status}, #{photo})
+    </insert>
+
+    <update id="update">
+        UPDATE rotation
+        SET title = #{title}, describel = #{describel}, create_time = #{createTime}
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateById">
+        UPDATE rotation
+        SET photo = #{photo}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM rotation
+        WHERE id = #{id}
+    </delete>
+
+    <delete id="deleteCount">
+        DELETE FROM rotation WHERE id in
+        <foreach collection="array" close=")" open="(" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

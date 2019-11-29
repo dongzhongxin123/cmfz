@@ -1,0 +1,20 @@
+package com.baizhi.cmfz.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Article {
+
+    private String id;
+    private String title;
+    private String author;
+    private String content;
+    private String status;
+    private Date publishTime;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.baizhi.cmfz.dao.UserDao">
+
+    <insert id="addUser">
+        INSERT INTO user VALUES (#{id}, #{name}, #{sex}, #{province}, #{createTime})
+    </insert>
+    <update id="update"></update>
+
+
+    <!--统计用户对于这个软件的注册使用情况-->
+    <select id="queryByTime" resultType="java.lang.Integer">
+
+        SELECT count(id)
+        FROM user
+        WHERE datediff(now(), create_time) &lt; #{day} AND sex = #{sex}
+
+    </select>
+
+    <select id="queryByLocation" resultType="com.baizhi.cmfz.entity.Pojo">
+        SELECT
+            count(id) AS value,
+            province  AS name
+        FROM user
+        WHERE sex = #{sex}
+        GROUP BY province
+    </select>
+
+    <select id="selectByPhone" resultType="com.baizhi.cmfz.entity.User">
+        SELECT
+    </select>
+
+</mapper>
