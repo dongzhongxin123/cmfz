@@ -43,22 +43,28 @@ public class ArticleController {
     @ResponseBody
     public void add(Article article) {
         articleService.add(article);
-        System.out.println("article = " + article);
     }
 
+   @RequestMapping("queryById")
+   @ResponseBody
+   public Article queryById(String id){
+
+       Article article = articleService.findById(id);
+       return article;
+   }
+
+
+
     @RequestMapping("/edit")
-    public void edit(String oper, String id) {
+    public void edit(String oper, String id,Article article) {
         if (oper.equals("del")) {
             System.out.println("删除" + id);
             articleService.deleteById(id);
+        }if(oper.equals("edit")){
+            articleService.saveArticle(article);
         }
     }
 
-
-    @RequestMapping("update")
-    public void update(Article article) {
-        System.out.println(article);
-    }
 
 
     @RequestMapping("/search")

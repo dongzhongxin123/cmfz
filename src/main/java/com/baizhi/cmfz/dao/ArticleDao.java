@@ -13,7 +13,7 @@ public interface ArticleDao {
 
     Integer findByCount();
 
-    Article queryById(Integer id);
+    Article queryById(String id);
 
     void saveArticle(Article article);
 

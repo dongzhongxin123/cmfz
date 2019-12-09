@@ -11,7 +11,7 @@ public interface ArticleService {
 
     Integer findByCount();
 
-    Article findById(Integer id);
+    Article findById(String id);
 
     void saveArticle(Article article);
 

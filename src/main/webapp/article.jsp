@@ -48,7 +48,9 @@
                     }
                 }
             ]
-        }).jqGrid("navGrid", "#page1")
+        }).jqGrid("navGrid", "#page1",{
+            add:false
+        })
 
     })
 
@@ -82,7 +84,7 @@
             url: "${pageContext.request.contextPath}/article/add",
             type: "post",
             data: $("#addArticleFrom").serialize(),
-            success: function (data) {
+            success: function (result) {
                 $("#dd1").trigger("reloadGrid");
                 $("#myModal").modal("toggle");
             }
@@ -90,10 +92,50 @@
     }
 
 
+    //查看详情
+    function lookModel(id) {
+        $("#addArticleFrom")[0].reset();
+        $("#myModal").modal("show");
+        $.ajax({
+            url:'${pageContext.request.contextPath}/article/queryById?id='+id,
+            type:'get',
+            dataType:'json',
+            success:function (data) {
+                $("#title").val(data.title)
+                $("#author").val(data.author)
+                $("#status").val(data.status)
+                $("#publishTime").val(data.publishTime)
+                $("#content").val(data.content)
+            }
+        });
+
+
+        KindEditor.create('#editor',{
+            uploadJson:"${pageContext.request.contextPath}/kindeditor/upload",
+            filePostName:"img",
+            fileManagerJson:"${pageContext.request.contextPath}/kindeditor/getAllImg",
+            allowFileManager:true,
+            afterBlur:function () {
+                this.sync();
+            }
+        });
+        KindEditor.html("#editor","");
+        KindEditor.appendHtml("#editor",value.content);
+
+
+        $("#modal_footer").html(
+            "<button type=\"button\" onclick=\"updateArticle('"+id+"')\" class=\"btn btn-primary\">修改</button>\n" +
+            "<button type=\"button\" class=\"btn btn-danger\" data-dismiss=\"modal\">取消</button>"
+        );
+
+    }
+
+
+
 
 </script>
 </head>
-
+<!--标签页-->
 <div class="container-fluid">
     <div class="row col-md-12">
 
@@ -116,8 +158,9 @@
     </div>
 </div>
 
-<!-- Modal -->
 
+
+<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content" style="width:750px">

@@ -34,11 +34,14 @@ public class ArticleServiceImpl implements ArticleService {
         return articleDao.findByCount();
     }
 
+
     @Transactional(propagation = Propagation.SUPPORTS)
     @Override
-    public Article findById(Integer id) {
-        return articleDao.queryById(id);
+    public Article findById(String id) {
+        Article article = articleDao.queryById(id);
+        return article;
     }
+
 
     @Override
     public void saveArticle(Article article) {
