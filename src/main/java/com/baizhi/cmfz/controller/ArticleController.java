@@ -67,17 +67,17 @@ public class ArticleController {
         return articleService.search(query, pageIndex);
     }
 
-    //参数：文章id，用户id
+    /*//参数：文章id，用户id
     @RequestMapping("si")
     @ResponseBody
     public Map<String, Object> si(String id, String author) {
 
         Map<String, Object> map = new HashMap<>();
-        /**
+        *//**
          *  "code": 200,
          "   link": "http://xxx/1000.html", #跳转地址（HTML页面，客户端通过webView方式打开）
          "   id": "100024",                 #文章id
-         */
+         *//*
         Article article = articleDao.queryByUidAndId(id, author);
         try {
             map.put("code", 200);
@@ -89,7 +89,7 @@ public class ArticleController {
             map.put("msg", "参数错误");
         }
         return map;
-    }
+    }*/
 
 
 }

@@ -17,7 +17,7 @@
 
     $(function () {
         //懒加载
-        $("#4cdd44").jqGrid({
+        $("#dd1").jqGrid({
             url: "${pageContext.request.contextPath}/article/queryByPage",
             editurl: "${pageContext.request.contextPath}/article/edit",
             styleUI: 'Bootstrap',  //设置bootstrap的样式
@@ -83,40 +83,14 @@
             type: "post",
             data: $("#addArticleFrom").serialize(),
             success: function (data) {
-                $("#myModal").modal("toggle");
-            }
-        })
-    }
-
-    function lookModel(id) {
-        $("#myModal").modal("show");
-
-        var value = $("#articleList").getRowData(id);
-        alert(value);
-
-        KindEditor.create('#editor', {
-            uploadJson: "${pageContext.request.contextPath}/kindeditor/upload",
-            filePostName: "img",
-            fileManagerJson: "${pageContext.request.contextPath}/kindeditor/getAllImg",
-            allowFileManager: true,
-            afterBlur: function () {
-                this.sync();
-            }
-        });
-    }
-
-    function updateArticle(id) {
-        $.ajax({
-            url: "${pageContext.request.contextPath}/article/update?id=" + id,
-            datatype: "json",
-            type: "get",
-            data: $("#addArticleFrom").serialize(),
-            success: function (data) {
-                $("#myModal").modal("toggle");
                 $("#dd1").trigger("reloadGrid");
+                $("#myModal").modal("toggle");
             }
         })
     }
+
+
+
 </script>
 </head>
 
@@ -197,8 +171,6 @@
             </div>
             <!--模态页脚-->
             <div class="modal-footer" id="modal_footer">
-                <%--<button type="button" class="btn btn-primary">保存</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>--%>
             </div>
         </div>
     </div>
