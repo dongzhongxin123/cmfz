@@ -1,3 +1,4 @@
+/*
 package com.baizhi.cmfz.conf;
 
 import org.elasticsearch.client.transport.TransportClient;
@@ -21,3 +22,4 @@ public class TranSportConf {
     }
 
 }
+*/

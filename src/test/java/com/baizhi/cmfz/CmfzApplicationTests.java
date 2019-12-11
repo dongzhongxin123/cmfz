@@ -11,6 +11,7 @@ import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.baizhi.cmfz.dao.UserDao;
 import com.baizhi.cmfz.entity.Article;
+import com.baizhi.cmfz.respository.ArticleRespository;
 import com.baizhi.cmfz.service.ArticleService;
 import com.baizhi.cmfz.service.UserService;
 import org.elasticsearch.client.transport.TransportClient;
@@ -38,11 +39,13 @@ public class CmfzApplicationTests {
     private UserDao userDao;
     @Autowired
     private UserService userService;
+    @Autowired
+    private ArticleRespository articleRespository;
 
-    //创建索引库
+    //更新索引库
 
     @Test
-    public void init() throws IOException {
+    public void updateEs() throws IOException {
         List<Article> articles = articleService.queryAll();
         for (Article article : articles) {
             XContentBuilder xContentBuilder = XContentFactory.jsonBuilder();
@@ -87,6 +90,21 @@ public class CmfzApplicationTests {
             e.printStackTrace();
         } catch (ClientException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void save(){
+        List<Article> articles = articleService.queryAll();
+        for (Article article : articles) {
+            Article article1 = new Article();
+            article1.setId(article.getId());
+            article1.setAuthor(article.getAuthor());
+            article1.setContent(article.getContent());
+            article1.setStatus(article.getStatus());
+            article1.setPublishTime(article.getPublishTime());
+            article1.setTitle(article.getTitle());
+            articleRespository.save(article1);
         }
     }
 }

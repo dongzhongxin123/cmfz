@@ -29,12 +29,12 @@
                         if (data.length != 0) {
                             $.each(data, function (index, article) {
                                 var hr = $("<hr>");
-                                var id = $("<p>").html(article.id);
-                                var title = $("<p>").html(article.title);
-                                var author = $("<p>").html(article.author);
-                                var content = $("<p>").html(article.content);
-                                var status = $("<p>").html(article.status);
-                                var publishTime = $("<p>").html(article.publishTime);
+                                var id = $("<p>").html("id："+article.id);
+                                var title = $("<p>").html("标题："+article.title);
+                                var author = $("<p>").html("作者："+article.author);
+                                var content = $("<p>").html("内容："+article.content);
+                                var status = $("<p>").html("状态："+article.status);
+                                var publishTime = $("<p>").html("发布时间："+article.publishTime);
                                 $("#ff").append(id).append(title).append(author).append(content).append(status).append(publishTime).append(hr)
                             })
                         }

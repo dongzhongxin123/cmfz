@@ -21,5 +21,7 @@ public interface ArticleService {
 
     Map<String, Object> queryByPage(Integer page, Integer rows);
 
-    List<Map> search(String query, Integer pageIndex);
+    //List<Map> search(String query, Integer pageIndex);
+
+    public List<Article> querByHigh(String key);
 }

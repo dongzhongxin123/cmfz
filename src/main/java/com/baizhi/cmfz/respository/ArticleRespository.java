@@ -1,5 +1,6 @@
 package com.baizhi.cmfz.respository;
 
+import com.baizhi.cmfz.entity.Article;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.index.query.QueryBuilders;
@@ -8,15 +9,17 @@ import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
 import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Repository
-public class ArticleRespository {
+public interface ArticleRespository extends ElasticsearchRepository<Article,String>{
 
+   /*
+    以下是通过Spring对es的操作
     @Autowired
     TransportClient transportClient;
 
@@ -44,10 +47,10 @@ public class ArticleRespository {
                 .setSize(4)
                 .get();
 
-        /*
+        *//*
          * 如果该字段有高亮则返回高亮
          * 如果没有返回原始数据
-         * */
+         * *//*
         SearchHit[] hits = response.getHits().getHits();
         for (SearchHit hit : hits) {
             Map<String, Object> sourceAsMap = hit.getSourceAsMap();
@@ -60,5 +63,5 @@ public class ArticleRespository {
             list.add(sourceAsMap);
         }
         return list;
-    }
+    }*/
 }

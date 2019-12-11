@@ -130,6 +130,12 @@
 
     }
 
+    $("#basic-addon2").click(function () {
+
+        var valu=$("#esValue").val()
+        console.log(valu)
+        $('#changeContent').load('es.jsp?esVal='+valu)
+    })
 
 
 
@@ -146,6 +152,12 @@
                 </a>
             </li>
             <li><a href="#addArticle" onclick="showModal()" data-toggle="tab">添加文章</a></li>
+            <li>
+                <div class="input-group" style="width: 300px;float: right">
+                    <input  type="text"  id="esValue" class="form-control" placeholder="请输入您想查找的内容" aria-describedby="basic-addon2">
+                    <span class="input-group-addon" id="basic-addon2">搜索</span>
+                </div>
+            </li>
         </ul>
 
         <div id="myTabContent" class="tab-content">

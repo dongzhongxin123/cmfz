@@ -131,7 +131,6 @@
                          aria-labelledby="headingThree">
                         <div class="panel-body">
                             <li><a href="javascript:$('#changeContent').load('article.jsp')">文章列表</a></li>
-                            <li><a href="javascript:$('#changeContent').load('searchArticle.jsp')">文章检索</a></li>
                         </div>
                     </div>
                 </div>
@@ -146,7 +145,7 @@
                     </div>
                     <div id="collapseF" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingF">
                         <div class="panel-body">
-                            <li><a href="#">用户列表</a></li>
+                            <li><a href="javascript:$('#changeContent').load('userDetail.jsp')">用户列表</a></li>
                         </div>
                     </div>
                 </div>

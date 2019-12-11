@@ -1,5 +1,6 @@
 package com.baizhi.cmfz.controller;
 
+import com.alibaba.fastjson.support.odps.udf.CodecCheck;
 import com.baizhi.cmfz.dao.ArticleDao;
 import com.baizhi.cmfz.entity.Article;
 import com.baizhi.cmfz.service.ArticleService;
@@ -66,12 +67,29 @@ public class ArticleController {
     }
 
 
+    @RequestMapping("queryByEs")
+    @ResponseBody
+    public List<Article> queryByEs(String value){
 
-    @RequestMapping("/search")
+        System.out.println("value = " + value);
+
+        List<Article> articles = articleService.querByHigh(value);
+
+        return articles;
+    }
+
+
+
+
+
+
+
+
+    /*@RequestMapping("/search")
     @ResponseBody
     public List<Map> search(String query, Integer pageIndex) {
         return articleService.search(query, pageIndex);
-    }
+    }*/
 
     /*//参数：文章id，用户id
     @RequestMapping("si")
@@ -95,7 +113,7 @@ public class ArticleController {
             map.put("msg", "参数错误");
         }
         return map;
-    }*/
-
+    }
+*/
 
 }

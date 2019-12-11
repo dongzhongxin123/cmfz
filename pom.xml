@@ -126,7 +126,7 @@
         </dependency>
 
         <!--整合es-->
-        <dependency>
+      <!--  <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
             <version>6.2.4</version>
@@ -140,7 +140,7 @@
             <groupId>org.elasticsearch.plugin</groupId>
             <artifactId>transport-netty4-client</artifactId>
             <version>6.2.4</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>io.goeasy</groupId>
@@ -153,6 +153,13 @@
             <artifactId>aliyun-java-sdk-core</artifactId>
             <version>4.0.3</version>
         </dependency>
+
+        <!--通过spring data 操作Es-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
+
 
     </dependencies>
 
