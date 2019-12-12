@@ -107,5 +107,21 @@ public class CmfzApplicationTests {
             articleRespository.save(article1);
         }
     }
+    
+    //缓存的测试
+    @Test
+    public void testCache(){
+        List<Article> articles = articleService.queryAll();
+        System.out.println("第一次走数据库");
+        for (Article article : articles) {
+            System.out.println("article = " + article);
+        }
+        List<Article> articles1 = articleService.queryAll();
+       System.out.println("第二次走缓存");
+        for (Article article : articles1) {
+            System.out.println("article = " + article);
+        }
+    }
+
 }
 

@@ -2,10 +2,11 @@ package com.baizhi.cmfz.dao;
 
 
 import com.baizhi.cmfz.entity.Article;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
-
+@CacheNamespace
 public interface ArticleDao {
 
 

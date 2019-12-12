@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.2.RELEASE</version>
+        <version>2.0.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.baizhi</groupId>
@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -36,6 +37,7 @@
             <version>2.1.1</version>
         </dependency>
 
+        <!--数据库驱动、数据源-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -47,6 +49,7 @@
             <version>1.1.10</version>
         </dependency>
 
+        <!--整合jsp-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
@@ -58,16 +61,15 @@
             <version>1.2</version>
         </dependency>
 
+        <!--整合lombook-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+
+
+        <!--验证码-->
         <!-- https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
         <dependency>
             <groupId>com.github.penggle</groupId>
@@ -75,7 +77,7 @@
             <version>2.3.2</version>
         </dependency>
 
-        <!--上传-->
+        <!--整合上传-->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
@@ -101,6 +103,7 @@
             <scope>compile</scope>
         </dependency>
 
+        <!--整合easypoi-->
         <dependency>
             <groupId>cn.afterturn</groupId>
             <artifactId>easypoi-base</artifactId>
@@ -111,7 +114,6 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.0</version>
         </dependency>
-
 
         <dependency>
             <groupId>cn.afterturn</groupId>
@@ -142,6 +144,7 @@
             <version>6.2.4</version>
         </dependency>-->
 
+        <!--整合goeasy-->
         <dependency>
             <groupId>io.goeasy</groupId>
             <artifactId>goeasy-sdk</artifactId>
@@ -161,6 +164,19 @@
         </dependency>
 
 
+        <!--整合redis-->
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.0.6.RELEASE</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.session/spring-session-data-redis -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+            <version>2.0.6.RELEASE</version>
+        </dependency>
     </dependencies>
 
 

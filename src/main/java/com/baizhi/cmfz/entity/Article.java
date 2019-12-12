@@ -8,13 +8,14 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(indexName = "cmfz",type = "article")
-public class Article {
+public class Article implements Serializable{
     @Id
     private String id;
     @Field(type = FieldType.Keyword)
